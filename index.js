@@ -71,8 +71,8 @@ function findEmployeeByFirstName(srcArray, firstName){
 function calculatePayroll(records){
     // console.log(records)
     const allPay = records.map((empl) => {return allWagesFor(empl)})
-    console.log(allPay)
-    return allPay.reduce((acc, cv) => acc + cv)
+    const reducer = (acc, cv) => acc + cv;
+    return allPay.reduce(reducer)
 }
 
 let allWagesFor = function () {

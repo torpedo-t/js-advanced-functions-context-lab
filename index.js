@@ -60,18 +60,8 @@ function hoursWorkedOnDate(dateYMD){
 function wagesEarnedOnDate(dateYMD){
     // console.log(dateYMD)
     // console.log(this)
-    const wage = this.payPerHour
-    // console.log(wage)
-    const hoursWorked = hoursWorkedOnDate(dateYMD)
-    // console.log(hoursWorked)
-    return wage * hoursWorked
-}
-
-function wagesEarnedOnDate(obj, dateYMD){
-
-    const wage = obj.payPerHour
-    const hoursWorked = hoursWorkedOnDate(obj, dateYMD)
-    return wage * hoursWorked
+    const hoursWorked = hoursWorkedOnDate.call(this, dateYMD) * this.payPerHour
+    return parseFloat(hoursWorked)
 }
 
 function findEmployeeByFirstName(srcArray, firstName){
@@ -79,7 +69,9 @@ function findEmployeeByFirstName(srcArray, firstName){
 }
 
 function calculatePayroll(records){
-    const allPay = (records.map((empl) => {return allWagesFor(empl)}))
+    // console.log(records)
+    const allPay = records.map((empl) => {return allWagesFor(empl)})
+    console.log(allPay)
     return allPay.reduce((acc, cv) => acc + cv)
 }
 

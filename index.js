@@ -68,11 +68,14 @@ function findEmployeeByFirstName(srcArray, firstName){
     return srcArray.find((record) => record.firstName === firstName)
 }
 
+// accepts an array of employee record objects as parameters
+// iterates through array, creating new array and passing each iteration of array as parameter to allWagesFor function
+// 
 function calculatePayroll(records){
     // console.log(records)
-    const allPay = records.map((empl) => {return allWagesFor(empl)})
-    const reducer = (acc, cv) => acc + cv;
-    return allPay.reduce(reducer)
+    const allPay = (records.map((empl) => {return allWagesFor(empl)}))
+    console.log(allPay)
+    return allPay.reduce((acc, cv) => acc + cv)
 }
 
 let allWagesFor = function () {
